@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Water Availability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #648880, #293f50);
+            color: #333333;
+            padding: 20px;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        nav {
+            background-color: #004d99;
+            color: #ffffff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        nav a:hover {
+            color: #cccccc;
+        }
+        .container {
+            width: 80%;
+            height: 80%;
+            background-color: white;
+            border-radius: 10px;
+            margin: auto;
+            padding: 20px;
+            overflow: auto;
+        }
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+        .slides {
+            display: none;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .caption {
+            text-align: center;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="water_sources.html">Water Sources</a>
+        <a href="india_map.html">India Map</a>
+        <a href="water_statistics.html">Water Statistics</a>
+        <a href="conservation.html">Water Conservation</a>
+        <a href="resources.html">Resources</a>
+    </nav>
+    <div class="container">
+    <div class="slideshow-container">
+        <div class="slides">
+            <img src="slider1.jpg" alt="Slide 1">
+        </div>
+        <div class="slides">
+            <img src="slider2.jpg" alt="Slide 2">
+
+        </div>
+        <div class="slides">
+            <img src="slider3.jpg" alt="Slide 3">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="dot-container" style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+
+        <h1>Welcome to our Water Availability Website</h1>
+        <p>Water availability is a critical issue that affects the health and well-being of people around the world. Our website provides detailed information on water availability, water sources, water statistics, water conservation, and resources.</p>
+        <h2>Types of Water Sources</h2>
+        <p>Fresh water comes in two forms: safe and risky. Safe options, like piped water or protected wells, are improved sources. These shield water from contamination. Unimproved sources, like unprotected springs or rivers, can be polluted. Rainwater collection and bottled water are also considered improved sources, while rivers and lakes often fall under unimproved due to potential contamination. Access to improved water is vital for health, reducing waterborne diseases. </p>
+        <h2>India Map</h2>
+        <p>Our website includes a map of India with clickable states. When you click on a state, you will see detailed water statistics for that state.</p>
+        <h2>Water Statistics</h2>
+        <p>Our website provides detailed water statistics for each state in India, including data on water availability, water quality, and water infrastructure.</p>
+        <h2>Water Conservation</h2>
+        <p>Conserve water for a healthy planet! Our website offers tips to slash your water footprint. Small changes add up: turn off faucets while brushing teeth, run full dishwasher loads, and water your lawn wisely. Explore our resources for more ways to be a water warrior! </p>
+        <h2>Resources</h2>
+        <p>Our website boasts a resources section packed with informative links. Explore these valuable resources to gain a richer understanding of this crucial topic. You'll find connections to additional information and insights on water sources, distribution, and potential challenges.</p>
+
+    </div>
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("slides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
+</body>
+</html>
